@@ -16,7 +16,7 @@ logger = Logger(SHOW_LOG).get_logger(__name__)
 # Получаем пути до тестовых json
 BASE_DIR = os.path.dirname(__file__)
 TESTS_DIR = os.path.join(BASE_DIR, "test_data")
-# URL вашего API, запущенного в контейнере
+# URL API, запущенного в контейнере
 SERVER_URL = "http://localhost:8000/predict"
 
 

@@ -1,9 +1,7 @@
 services:
   api:
     build: .
-    image: travissscottt/api_car_price:latest
-    container_name: api_container
+    image: api-image:latest
+    container_name: api-container
     ports:
       - "8000:8000"
-    environment:
-      - DOCKER_ENV=true

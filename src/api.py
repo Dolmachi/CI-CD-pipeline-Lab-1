@@ -24,7 +24,10 @@ class CarFeatures(BaseModel):
     Transmission: str
     Engine_Size: float
     Mileage: float
-    
+ 
+@app.get('/')
+def health_check():
+    return {'health_check': 'OK'}    
 
 @app.post("/predict")
 def predict(features: CarFeatures):

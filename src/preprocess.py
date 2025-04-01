@@ -20,7 +20,7 @@ class DataMaker():
         self.config.read("config.ini")
         
         # Пути к файлам
-        self.project_path = os.path.join(os.getcwd(), "data")
+        self.project_path = "data"
         self.data_path = os.path.join(self.project_path, "car_price_dataset.csv")
         self.X_path = os.path.join(self.project_path, "Car_X.csv")
         self.y_path = os.path.join(self.project_path, "Car_y.csv")
