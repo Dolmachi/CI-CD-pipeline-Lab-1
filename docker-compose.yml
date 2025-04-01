@@ -1,7 +1,7 @@
 services:
   api:
     build: .
-    image: api-image-1:latest
+    image: travissscottt/api-image-1:latest
     container_name: api-container
     ports:
       - "8000:8000"

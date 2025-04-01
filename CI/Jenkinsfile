@@ -63,7 +63,7 @@ pipeline {
         stage('Push Docker Image to DockerHub') {
             steps {
                 sh '''
-                    bash -c 'image_id=$(docker images -q api-image-1:latest); if [ -z "$image_id" ]; then echo "Error: Docker image not found. Build might have failed."; exit 1; fi; docker push api-image-1:latest'
+                    bash -c 'image_id=$(docker images -q travissscottt/api-image-1:latest); if [ -z "$image_id" ]; then echo "Error: Docker image not found. Build might have failed."; exit 1; fi; docker push travissscottt/api-image-1:latest'
                 '''
             }
         }
@@ -72,7 +72,7 @@ pipeline {
     post {
         always {
             sh '''
-                bash -c "docker stop api-container || true; docker rm api-container || true; docker rmi api-image-1:latest || true; docker logout || true"
+                bash -c "docker stop api-container || true; docker rm api-container || true; docker rmi travissscottt/api-image-1:latest || true; docker logout || true"
             '''
             cleanWs()
         }
