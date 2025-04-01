@@ -54,7 +54,7 @@ pipeline {
             steps {
                 dir("CI-CD-pipeline-Lab-1") {
                     sh '''
-                        bash -c 'container_id=$(docker ps -qf "name=api_container"); if [ -z "$container_id" ]; then echo "No container running"; exit 1; fi; docker logs --tail 1000 "$container_id"'
+                        bash -c 'container_id=$(docker ps -qf "name=api-container"); if [ -z "$container_id" ]; then echo "No container running"; exit 1; fi; docker logs --tail 1000 "$container_id"'
                     '''
                 }
             }
