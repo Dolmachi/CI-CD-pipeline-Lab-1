@@ -18,7 +18,7 @@ pipeline {
             steps {
                 dir('CI-CD-pipeline-Lab-1') {
                     sh '''
-                        bash -c "docker pull api-image:latest && docker compose up -d"
+                        bash -c "docker pull api-image-1:latest && docker compose up -d"
                     '''
                 }
             }
@@ -47,7 +47,7 @@ pipeline {
     post {
         always {
             sh '''
-                bash -c "docker stop api-container || true; docker rm api-container || true; docker rmi api-image:latest || true; docker logout || true"
+                bash -c "docker stop api-container || true; docker rm api-container || true; docker rmi api-image-1:latest || true; docker logout || true"
             '''
             cleanWs()
         }
