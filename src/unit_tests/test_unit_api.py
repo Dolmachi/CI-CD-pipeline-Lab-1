@@ -25,18 +25,19 @@ def test_unit_api(test_file):
     with open(test_file, "r") as f:
         test_data = json.load(f)
     
-    # Отправляем POST-запрос в API
-    response = client.post("/predict", json=test_data["X"])
+    # Проверяем health-check
+    health_response = client.get('/')
+    assert health_response.status_code == 200
     
-    # Проверяем, что API вернул 200 OK
-    assert response.status_code == 200
-
+    # Проверяем POST-запрос predict
+    predict_response = client.post("/predict", json=test_data["X"])
+    assert predict_response.status_code == 200
     # Проверяем, что в ответе есть предсказание
-    assert "prediction" in response.json()
+    assert "prediction" in predict_response.json()
 
     # Ожидаемое и полученное предсказание
     y_true = test_data["y"]["prediction"]
-    y_pred = response.json()["prediction"]
+    y_pred = predict_response.json()["prediction"]
 
     # Проверяем, что предсказание близко к ожидаемому (допуск ±1%)
     assert math.isclose(y_pred, y_true, rel_tol=0.01)
