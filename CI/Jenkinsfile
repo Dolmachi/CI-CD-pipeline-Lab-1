@@ -45,7 +45,7 @@ pipeline {
         stage('Build and Run Docker Container') {
             steps {
                 dir('CI-CD-pipeline-Lab-1') {
-                    sh 'bash -c "docker compose up -d"'
+                    sh 'bash -c "docker compose up -d --build"'
                 }
             }
         }
